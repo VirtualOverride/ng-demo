@@ -1,0 +1,10 @@
+angular
+  .module('ngDemo1App')
+  .config(function ($stateProvider) {
+	    $stateProvider
+			.state('sample', {
+			    url: '/sample',
+			    templateUrl: 'sample.html',
+			    controller: 'ContactsCtrl'
+			});
+  });
