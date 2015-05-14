@@ -6,6 +6,20 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
+var Contacts = require('../api/contacts/contacts.model');
+
+Contacts
+  .find({})
+  .remove(function(){
+      Contacts
+        .create({
+           id: 1,
+           firstName: 'Pedro',
+           lastName: 'Dela Cruz',
+           mobile: '+639981212'
+        });
+  });
+
 
 
 Thing.find({}).remove(function() {

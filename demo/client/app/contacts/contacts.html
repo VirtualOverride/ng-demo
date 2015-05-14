@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+	<h2><label class="control-label">Contacts</label></h2>
+	<button type="submit" class="btn btn-link" ng-click="createEvent()"> Create New</button>
+	<hr />
+
+	<form class="form-horizontal" role="form">
+	    <div class="form-group">
+	        <div class="input-group" ng-show="contacts.length > 0">
+	            <div class="input-group-addon">Find Contacts</div>
+	            <input class="form-control" type="text" placeholder="Contact Name" ng-model="search">
+	        </div>
+	    </div>
+
+	    <div class="form-group">
+	        <label class="label-info" ng-show="contacts.length == null">No Records Found</label>
+	        <table class="table table-hover" ng-show="contacts.length > 0">
+	            <thead>
+	                <tr>
+	                    <th>
+	                    	Name
+	                    </th>
+	                    <th>
+	                    	Mobile Number
+	                    </th>
+	                    <th>
+	                    	Action
+	                    </th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr ng-repeat="contact in contacts | filter:search:strict | orderBy:orderByField:reverseSort">
+	                    <td>{{ contact.firstName + ' ' + contact.lastName }}</td>
+	                    <td>{{ contact.mobile }}</td>
+	                    <td>
+	                    	<a class="btn btn-primary" href="/contacts/edit/{{ contact.id }}">Edit</a>
+	                    	<a class="btn btn-primary" href="/contacts/details/{{ contact.id }}">Details</a>
+	                    	<a class="btn btn-primary" href="/contacts/delete/{{ contact.id }}">Delete</a>
+	                    </td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</form>
+</div>

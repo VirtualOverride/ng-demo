@@ -15,6 +15,7 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -60,6 +61,7 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -67,6 +69,14 @@
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/common/readonly.directive.js"></script>
+          <script src="app/contacts/contacts.add.controller.js"></script>
+          <script src="app/contacts/contacts.controller.js"></script>
+          <script src="app/contacts/contacts.delete.controller.js"></script>
+          <script src="app/contacts/contacts.details.controller.js"></script>
+          <script src="app/contacts/contacts.edit.controller.js"></script>
+          <script src="app/contacts/contacts.js"></script>
+          <script src="app/contacts/contacts.service.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="components/modal/modal.service.js"></script>
