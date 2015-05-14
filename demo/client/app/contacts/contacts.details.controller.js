@@ -10,10 +10,11 @@ function ContactsDetailsCtrl($scope, Contacts, $stateParams) {
     var id = $stateParams.id;
 
     $scope.isreadonly = true;
+    $scope.action = 'Details';
 
 	Contacts.getById(id)
 	  	.success(function(data, status, headers, config){
-			$scope.contact = data[0];
+			$scope.contact = data;
 	  	})
 		.error(function(data, status, headers, config){
 	  	   	console.log(data);

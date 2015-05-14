@@ -10,24 +10,25 @@ function ContactsEditCtrl($scope, Contacts, $stateParams, notifications) {
     var id = $stateParams.id;
 
     $scope.isreadonly = false;
-    $scope.save = save;
+    $scope.action = 'Edit';
+    $scope.submit = submit;
 
 	Contacts.getById(id)
 	  	.success(function(data, status, headers, config){
-			$scope.contact = data[0];
+			$scope.contact = data;
 	  	})
 		.error(function(data, status, headers, config){
 	  	   	console.log(data);
 	  	});		
 
 
-	function save(){
+	function submit(){
 		Contacts.update($scope.contact)
 			.success(function(data, status, headers, config){
-				console.log(data);
+				notifications.showSuccess('Success..');
 		  	})
 			.error(function(data, status, headers, config){
-		  	   	console.log(data);
+		  	   	notifications.showError('Error.');
 		  	});	
 	};
 };

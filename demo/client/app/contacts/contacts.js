@@ -22,6 +22,11 @@ angular
 			.state('contacts-delete', {
 					url: '/contacts/delete/:id',
 					templateUrl: 'app/contacts/contacts.edit.html',
-					controller: 'ContactsDetailsCtrl'
+					controller: 'ContactsDeleteCtrl'
+			})
+			.state('contacts-add', {
+					url: '/contacts/add',
+					templateUrl: 'app/contacts/contacts.edit.html',
+					controller: 'ContactsAddCtrl'
 			});
   });
