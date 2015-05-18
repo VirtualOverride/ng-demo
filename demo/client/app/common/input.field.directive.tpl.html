@@ -1,0 +1,14 @@
+<div class="form-group" ng-class="{ 'hasError': expression }">
+    <label for="{{ id }}" class="col-sm-2 control-label">{{ label }}</label>
+    <div class="col-sm-3">
+        <input type="text" 
+               class="form-control" 
+               name="{{ id }}" 
+               id="{{ id }}" 
+               placeholder="{{ label }}" 
+               ng-model="ngModel" 
+               input-readonly isreadonly="isreadonly" 
+               required />
+    </div>
+    <p ng-show="{{ expression }}" class="help-block">{{ label }} is required.</p>
+</div>

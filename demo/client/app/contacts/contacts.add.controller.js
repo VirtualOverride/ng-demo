@@ -4,19 +4,21 @@ angular
   .module('ngDemo1App')
   .controller('ContactsAddCtrl', ContactsAddCtrl);
 
-ContactsAddCtrl.$inject = ['$scope', 'Contacts', 'notifications', '$timeout'];
+ContactsAddCtrl.$inject = ['Contacts', 'notifications', '$timeout'];
 
-function ContactsAddCtrl($scope, Contacts, notifications, $timeout) {	
+function ContactsAddCtrl(Contacts, notifications, $timeout) {	
+    var vm = this;
 
-    $scope.isreadonly = false;
-    $scope.action = 'Add';
+    vm.isreadonly = false;
+    vm.action = 'Add';
 
-    $scope.submit = submit;
+    vm.submit = submit;
 
-    $scope.contact = reset();  
+    vm.contact = { firstName: null, lastName: null, mobile: null  };  
 
 	function submit(){
-		Contacts.save($scope.contact)
+		Contacts
+            .save(vm.contact)
 			.success(function(data, status, headers, config){
 				notifications.showSuccess('Success..');
                 $timeout(function(){
@@ -27,12 +29,4 @@ function ContactsAddCtrl($scope, Contacts, notifications, $timeout) {
 		  	   	notifications.showError('Error.');
 		  	});						
 	};
-
-    function reset(){
-        return {
-            firstName: null,
-            lastName: null,
-            mobile: null           
-        }
-    };
 };

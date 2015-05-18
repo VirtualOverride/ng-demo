@@ -4,17 +4,20 @@ angular
   .module('ngDemo1App')
   .controller('ContactsDetailsCtrl', ContactsDetailsCtrl);
 
-ContactsDetailsCtrl.$inject = ['$scope', 'Contacts', '$stateParams'];
+ContactsDetailsCtrl.$inject = ['Contacts', '$stateParams'];
 
-function ContactsDetailsCtrl($scope, Contacts, $stateParams) {	
+function ContactsDetailsCtrl(Contacts, $stateParams) {	
+    var vm = this;
+    
     var id = $stateParams.id;
 
-    $scope.isreadonly = true;
-    $scope.action = 'Details';
+    vm.isreadonly = true;
+    vm.action = 'Details';
 
-	Contacts.getById(id)
+	Contacts
+		.getById(id)
 	  	.success(function(data, status, headers, config){
-			$scope.contact = data;
+			vm.contact = data;
 	  	})
 		.error(function(data, status, headers, config){
 	  	   	console.log(data);

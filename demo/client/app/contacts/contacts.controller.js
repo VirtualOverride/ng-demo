@@ -4,13 +4,14 @@ angular
   .module('ngDemo1App')
   .controller('ContactsCtrl', ContactsCtrl);
 
-ContactsCtrl.$inject = ['$scope', 'Contacts'];
+ContactsCtrl.$inject = ['Contacts'];
 
-function ContactsCtrl($scope, Contacts) {	
+function ContactsCtrl(Contacts) {	
+	var vm = this;
 
 	Contacts.get()
 	  	.success(function(data, status, headers, config){
-			$scope.contacts = data;
+			vm.contacts = data;
 	  	})
 		.error(function(data, status, headers, config){
 	  	   	console.log(data);

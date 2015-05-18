@@ -5,18 +5,20 @@ angular
   .controller('ContactsDeleteCtrl', ContactsDeleteCtrl);
 
 ContactsDeleteCtrl.$inject = 
-	['$scope', 'Contacts', '$stateParams', 'notifications', '$timeout', '$location'];
+	['Contacts', '$stateParams', 'notifications', '$timeout'];
 
-function ContactsDeleteCtrl($scope, Contacts, $stateParams, notifications, $timeout, $location){	
-    var id = $stateParams.id;
+function ContactsDeleteCtrl(Contacts, $stateParams, notifications, $timeout){	
+	var vm = this;
+    var id = $stateParams.id;    
 
-    $scope.isreadonly = true;
-    $scope.action = 'Delete';
-    $scope.submit = submit;
+    vm.isreadonly = true;
+    vm.action = 'Delete';
+    vm.submit = submit;
 
-	Contacts.getById(id)
+	Contacts
+		.getById(id)
 	  	.success(function(data, status, headers, config){
-			$scope.contact = data;
+			vm.contact = data;
 	  	})
 		.error(function(data, status, headers, config){
 			if (status === 404) {
@@ -29,7 +31,8 @@ function ContactsDeleteCtrl($scope, Contacts, $stateParams, notifications, $time
 
 
 	function submit(){
-		Contacts.delete(id)
+		Contacts
+			.delete(id)
 			.success(function(data, status, headers, config){
 				notifications.showSuccess('Success..');
 				$timeout(function(){

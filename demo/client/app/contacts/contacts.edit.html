@@ -2,22 +2,19 @@
 <div class="container">
   <notifications-bar class="notifications"></notifications-bar>
   
-  <h2>{{ action }} Contact</h2>
+  <h2>{{ vm.action }} Contact</h2>
 
   <div ng-hide="action === 'Add'">
     <div class="space20"></div>
-
     <a class="btn btn-primary" href="/contacts/add">
-      <span class="glyphicon glyphicon-file"></span>
-      Create New
+      <span class="glyphicon glyphicon-file"></span>Create New
     </a>
-
     <div class="space20"></div>
   </div>
 
   <hr />
 
-  <form class="form-horizontal" name="editContactForm" role="form">
+  <form class="form-horizontal" name="editContactForm" role="form">     
       <div class="form-group" 
            ng-class="{ 'has-error' : editContactForm.firstName.$invalid && !editContactForm.firstName.$pristine }">
           <label for="firstName" class="col-sm-2 control-label">First Name</label>
@@ -27,8 +24,8 @@
                      name="firstName" 
                      id="firstName" 
                      placeholder="First Name" 
-                     ng-model="contact.firstName" 
-                     input-readonly isreadonly="isreadonly" 
+                     ng-model="vm.contact.firstName" 
+                     input-readonly isreadonly="vm.isreadonly" 
                      required />
           </div>
           <p ng-show="editContactForm.firstName.$invalid && !editContactForm.firstName.$pristine" 
@@ -44,8 +41,8 @@
                      name="lastName" 
                      id="lastName" 
                      placeholder="Last Name" 
-                     ng-model="contact.lastName" 
-                     input-readonly isreadonly="isreadonly"
+                     ng-model="vm.contact.lastName" 
+                     input-readonly isreadonly="vm.isreadonly"
                      required />
           </div>
           <p ng-show="editContactForm.lastName.$invalid && !editContactForm.lastName.$pristine" 
@@ -61,22 +58,22 @@
                      name="mobile" 
                      id="mobile" 
                      placeholder="Mobile" 
-                     ng-model="contact.mobile" 
-                     input-readonly isreadonly="isreadonly"
+                     ng-model="vm.contact.mobile" 
+                     input-readonly isreadonly="vm.isreadonly"
                      required />
           </div>
           <p ng-show="editContactForm.mobile.$invalid && !editContactForm.mobile.$pristine" 
              class="help-block">Mobile is required.
           </p>
       </div>
-      <div class="form-group" ng-hide="action === 'Details'">
+      <div class="form-group" ng-hide="vm.action === 'Details'">
           <div class="col-md-offset-2 col-md-10">
-              <button type="submit" ng-class="{ 'btn': true, 'btn-primary': true, 'btn-danger': action === 'Delete' }" 
-                      ng-click="submit();submitted=true"
+              <button type="submit" ng-class="{ 'btn': true, 'btn-primary': true, 'btn-danger': vm.action === 'Delete' }" 
+                      ng-click="vm.submit();submitted=true"
                       ng-disabled="!editContactForm.$valid">
-                      <span ng-if="action !== 'Delete'" class="glyphicon glyphicon-floppy-disk"></span>
-                      <span ng-if="action === 'Delete'" class="glyphicon glyphicon-trash"></span>
-                      {{ action === 'Delete' ? 'Delete' : 'Save' }}
+                      <span ng-if="vm.action !== 'Delete'" class="glyphicon glyphicon-floppy-disk"></span>
+                      <span ng-if="vm.action === 'Delete'" class="glyphicon glyphicon-trash"></span>
+                      {{ vm.action === 'Delete' ? 'Delete' : 'Save' }}
               </button>
               <a class="btn btn-primary" href="/contacts">
                 <span class="glyphicon glyphicon-remove"></span>
@@ -86,8 +83,7 @@
       </div>
     <hr />
     <a class="btn btn-link" href="/contacts">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      Back to Contacts
+      <span class="glyphicon glyphicon-chevron-left"></span>Back to Contacts
     </a>
   </form>
 </div>

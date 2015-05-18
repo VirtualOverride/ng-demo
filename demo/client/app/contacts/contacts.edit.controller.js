@@ -4,18 +4,21 @@ angular
   .module('ngDemo1App')
   .controller('ContactsEditCtrl', ContactsEditCtrl);
 
-ContactsEditCtrl.$inject = ['$scope', 'Contacts', '$stateParams', 'notifications'];
+ContactsEditCtrl.$inject = ['Contacts', '$stateParams', 'notifications'];
 
-function ContactsEditCtrl($scope, Contacts, $stateParams, notifications) {	
+function ContactsEditCtrl(Contacts, $stateParams, notifications){	
+	var vm = this;
+    
     var id = $stateParams.id;
 
-    $scope.isreadonly = false;
-    $scope.action = 'Edit';
-    $scope.submit = submit;
+    vm.isreadonly = false;
+    vm.action = 'Edit';
+    vm.submit = submit;
 
-	Contacts.getById(id)
+	Contacts
+		.getById(id)
 	  	.success(function(data, status, headers, config){
-			$scope.contact = data;
+			vm.contact = data;
 	  	})
 		.error(function(data, status, headers, config){
 	  	   	console.log(data);
@@ -23,7 +26,8 @@ function ContactsEditCtrl($scope, Contacts, $stateParams, notifications) {
 
 
 	function submit(){
-		Contacts.update($scope.contact)
+		Contacts
+			.update(vm.contact)
 			.success(function(data, status, headers, config){
 				notifications.showSuccess('Success..');
 		  	})

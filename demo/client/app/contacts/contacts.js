@@ -7,26 +7,31 @@ angular
 			.state('contacts', {
 			    url: '/contacts',
 			    templateUrl: 'app/contacts/contacts.html',
-			    controller: 'ContactsCtrl'
+			    controller: 'ContactsCtrl',
+			    controllerAs: 'vm'
 			})
 			.state('contacts-edit', {
 					url: '/contacts/edit/:id',
 					templateUrl: 'app/contacts/contacts.edit.html',
-					controller: 'ContactsEditCtrl'
+					controller: 'ContactsEditCtrl',
+					controllerAs: 'vm'
 			})
 			.state('contacts-details', {
 					url: '/contacts/details/:id',
 					templateUrl: 'app/contacts/contacts.edit.html',
-					controller: 'ContactsDetailsCtrl'
+					controller: 'ContactsDetailsCtrl',
+					controllerAs: 'vm'
 			})
 			.state('contacts-delete', {
 					url: '/contacts/delete/:id',
 					templateUrl: 'app/contacts/contacts.edit.html',
-					controller: 'ContactsDeleteCtrl'
+					controller: 'ContactsDeleteCtrl',
+					controllerAs: 'vm'
 			})
 			.state('contacts-add', {
 					url: '/contacts/add',
 					templateUrl: 'app/contacts/contacts.edit.html',
-					controller: 'ContactsAddCtrl'
+					controller: 'ContactsAddCtrl',
+					controllerAs: 'vm'
 			});
   });
