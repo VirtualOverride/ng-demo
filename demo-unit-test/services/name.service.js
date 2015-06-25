@@ -2,7 +2,13 @@
 	'use strict';
 
 	var nameService = (function(){
-		function nameService(){
+		var http;
+
+		nameService.$inject = ['$http'];
+
+		function nameService($http){
+			http = $http;
+
 			this.locations = [
 				'Philippines',
 				'United States of America'
@@ -13,6 +19,10 @@
 			return [
 				'John', 'Peter', 'James', 'Simon'
 			];
+		};
+
+		nameService.prototype.getNamesFromApi = function(){
+			return http.get('data/names.json');
 		};
 
 		return nameService;

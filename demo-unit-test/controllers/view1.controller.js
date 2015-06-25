@@ -3,8 +3,8 @@
 
 	 var controller = (function(){
 	 	function controller(){
-        this.message = 'View1 Here';
-        this.names = ['John', 'Peter', 'Simon'];
+	        this.message = 'View1 Here';
+	        this.names = ['John', 'Peter', 'Simon'];
 	 	}
 
 	 	return controller;

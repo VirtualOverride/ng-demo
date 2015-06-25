@@ -20,6 +20,7 @@ module.exports = function(config) {
       'bower_components/ui-router/release/angular-ui-router.js',
       'app.js',
       'controllers/**/*.js',
+      'services/**/*.js',
       'tests/**/*.js'
     ],
 
