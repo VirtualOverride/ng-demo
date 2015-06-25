@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="sample">
+<head>
+	<title>AngularJS Demo</title>
+</head>
+<body>
+	<div ng-controller="ParentController as p">
+		<ul ng-controller="ChildController as c">
+			<h2>Iteration wiht Data</h2>
+			<li ng-repeat="name in p.names">
+				{{ name }}
+			</li>
+		</ul> 
+	</div>
+	<script src="angular.min.js"></script>
+	<script src="sample.js"></script>
+</body>
+</html>
+
