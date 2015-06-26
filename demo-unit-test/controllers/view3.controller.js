@@ -2,16 +2,14 @@
 	'use strict';
 
 	 var controller = (function(){
-	 	var vm, scope;
+	 	var scope;
 
 	 	controller.$inject = ['$scope'];
 
 	 	function controller($scope){
-	 		vm = this;
 	 		scope = $scope;
 
 	        scope.message = 'View3 Here';
-
 	        this.isMessage = true;
 	 	}
 
